@@ -3,17 +3,15 @@
 import random
 
 
-def random_arrange(word):
+def random_arrange(word):  # this function returns letters of the word randomly arranged
 
-    # word1 = list(word)
     rand_nums = []
     mixed_letters = ""
     i = 0
-
-    while i < len(word):
+    while i < len(word):  # Compute random numbers len(word) times
         rand_num = random.randint(0, len(word) - 1)
-        if rand_num in rand_nums:
-            continue
+        if rand_num in rand_nums:  # This means the number has already been computed before
+            continue               # Therefore programme gets another random number
 
         else:
             mixed_letters += word[rand_num]
@@ -31,14 +29,13 @@ while play_again:
     #  A list of random words
     # The input function prompts the user's name and add it to the random words list
     random_word = ["grace", "television", "iphone", "ipad", "children", "snake", "hangman", "phone", "donkey", "horse",
-                   "durban", "london", "amanda", "brian", "team", "pie", "pizza", "month", "sing", "gospel", "cinema"
-                                                                                                             "hangman",
+                   "durban", "london", "amanda", "brian", "team", "pie", "pizza", "month", "sing", "gospel", "cinema",
                    "ice", "water", "taste", "red", "animals", "book", "pink", "house", "medal", "joke", "rugby",
                    "scared", "zebra", "run", "medal", "nokia", "god", "drink", "school", "ball", "aeroplane", "toyota",
                    "ruler", "paint", "sun", "apple", "tooth", "female", "chocolate", "banana", "food", "soccer",
-                   "trouble",
+                   "trouble", "hangman", "keyboard", "laptop", "computer", "netflix", "facebook", "tiktok", "twitter",
                    "lazy", "money", "king", "yellow", "milk", "america", "china", "dog", "cow", "pencil", "gym",
-                   "music",
+                   "music", "instagram", "spotify", "news", "english", "perfect", "keyboard", "school", "bus"
                    "work", "holiday", "peanuts", "work", "party", input("welcome!, enter your name: ")]
 
     print("Hi", random_word[-1], input("press enter to continue: "))  # Greet the user
@@ -80,8 +77,10 @@ while play_again:
         while lives >= 0:
 
             letter = input("Enter 1 To get the hint or guess the letter: ")
-            if letter == "1":
-                if lives > 3 and len(guess) > 4:
+            if letter == "1":  # The user only gets one chance to guess the whole word not letters
+                if lives > 3 and len(guess) > 4:  # the user has to have at least 3 lives remaining and the word has
+                    # to have at least 5 letters otherwise the user has to choose another type of hint.
+
                     hint = random_arrange(guess1)
                     print("Write the full word with the letters below\n" + hint)
                     full_word = (input("Enter the word: ")).lower()
@@ -91,7 +90,7 @@ while play_again:
                         play = False
                         break
 
-                    else:
+                    else:  # If the user guesses the wrong word then its a game over
                         print("GAME OVER, the correct word is: ", guess1)
                         play = False
                         break
